@@ -113,14 +113,14 @@ static unsigned int cols() {
 }
 static string basename(const string& s) {
   string b = s;
-  size_t i = b.find_last_not_of('/');
+  size_t i = b.find_last_not_of("\\/");
   if (i == string::npos) {
-    if (b[0] == '/')
+    if (b[0] == '/' || b[0] == '\\')
       b.erase(1);
     return b;
   }
   b.erase(i+1, b.length()-i-1);
-  i = b.find_last_of("/");
+  i = b.find_last_of("\\/");
   if (i != string::npos)
     b.erase(0, i+1);
   return b;
